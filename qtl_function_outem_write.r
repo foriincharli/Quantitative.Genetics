@@ -1,3 +1,5 @@
+# this script differs from qtl_function.r in that the out.em object is written to a .csv file with  for further analysis
+
 setwd("C:/Users/working_directory")
 
 library(qtl)
@@ -13,7 +15,7 @@ paste(files)
 qtlalyser <- function(files){
   lengtha_control <- read.cross("csvsr",
                                 dir = "C:/Users/working_directory",
-                                genfile = "rils1_lengthm_gen.csv",
+                                genfile = "rilsX_lengthm_gen.csv",
                                 phefile = files,
                                 genotypes = c("AA","BB"))
   lengtha_control <- convert2riself(lengtha_control)
