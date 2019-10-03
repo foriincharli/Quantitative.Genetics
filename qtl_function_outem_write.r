@@ -29,16 +29,17 @@ qtlalyser <- function(files){
   df1 <- as.data.frame(out.em) %>% 
     rownames_to_column(., "marker") %>% 
     filter(!grepl('c\\d.loc\\d{1,}', marker)) %>% 
-    write.table(., file = paste(files, "outem.csv"), sep = ",", row.names = FALSE)
+    write.table(., file = paste(gsub(".csv","_outem.csv", files)), sep = ",", row.names = FALSE)
   plot(out.em, chr = c("1","2","3","4","5"), ylim = c(0, 3.6), xlab = "Chromosomes", ylab = "LOD", main = (files))
-  dev.print(png, filename = paste(files,".png", sep = ""), width = 800, height = 500)
+  dev.print(png, filename = paste(gsub(".csv",".png", files)), width = 800, height = 500)
   dev.off()
 }
 
-
+#
 # call the qtlalyser function on all the files contained in files
 for (f in files){
   qtlalyser(f)  
   print(f)
 }
+
 
