@@ -1,4 +1,5 @@
-# this script differs from qtl_function.r in that the out.em object is written to a .csv file with  for further analysis
+# this script differs from qtl_function.r in that the out.em object is written to a .csv file for further analysis
+# it also improves on the prior script by cleaning up the filenames, so no more .csv.png files
 
 setwd("C:/Users/wd")
 
@@ -7,18 +8,15 @@ library(tidyverse)
 
 # make a list of files in the wd that follow the prescribed pattern of 'rilsX_param_tX.csv'
 files <- list.files(pattern = "rils\\d_\\w{3}_t\\d.csv$")
-# file.remove(files)
 
-# use this when you make a stupid mistake and overwrite your phenotype files
-# stupid <- list.files(pattern = "outem") %>% file.remove()
-
+# double check that the files match the pattern above
 paste(files)
 
 # basically the qtl stuff, stuffed into a function
 qtlalyser <- function(files){
   lengtha_control <- read.cross("csvsr",
                                 dir = "C:/Users/wd",
-                                genfile = "rils\\d_lengthm_gen.csv",
+                                genfile = "rilsX_lengthm_gen.csv",
                                 phefile = files,
                                 genotypes = c("AA","BB"))
   lengtha_control <- convert2riself(lengtha_control)
@@ -35,7 +33,6 @@ qtlalyser <- function(files){
   dev.off()
 }
 
-#
 # call the qtlalyser function on all the files contained in files
 for (f in files){
   qtlalyser(f)  
