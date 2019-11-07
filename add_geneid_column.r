@@ -12,10 +12,10 @@ gene_names <- gene_names %>%
   rename(marker = "sfp_marker")
 
 #### practice merge ####
-df1 <- read.csv("parameter_out_em_object.csv")
-
-df2 <- inner_join(df1, gene_names, by = "marker") %>% 
-  select(marker, geneID, chr, pos, lod)
+# df1 <- read.csv("rils_all_sfw_t2_outem.csv")
+# 
+# df2 <- inner_join(df1, gene_names, by = "marker") %>% 
+#   select(marker, geneID, chr, pos, lod)
 
 #### merge all ####
 files <- list.files(pattern = "*outem.csv")
