@@ -82,6 +82,10 @@ for(i in 1:length(down1)){
   
 
 #### Candidate gene selection ####
+  
+  # keywords tester
+  # use this to check versions of words available in Computational_description
+  any(grepl("auxin", TAIR.fun.desc$Computational_description)) 
 
   # filter for any rows containing key words
   list.keywords <- c("my|keywords|list|here")
