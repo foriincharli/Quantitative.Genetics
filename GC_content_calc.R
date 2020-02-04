@@ -27,7 +27,7 @@ char_frequencies <- char_frequencies[-1, ]
 char_freq <- as.data.frame(t(char_frequencies), stringsAsFactors = FALSE)
 
 # convert to numeric
-df2 <- mutate_all(df1, function(x) as.numeric(as.character(x)))
+df2 <- mutate_all(char_freq, function(x) as.numeric(as.character(x)))
 str(df2)
 
 # calculate G+C content
